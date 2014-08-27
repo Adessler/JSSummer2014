@@ -32,9 +32,9 @@ var userdata = {
     "innerheight": "",
     "innerwidth":"",
     "useragent":"",
-    "title":""
-    
-   
+    "title":"",
+    "mouseX" : [],
+   "mouseY" : []
     
 };
 
@@ -62,6 +62,8 @@ function savename(){
 function windowdata(){
     userdata.innerheight=window.innerHeight;
     userdata.innerwidth=window.innerWidth;
+    userdata.useragent=window.navigator.userAgent;
+    userdata.title=document.title
    
     
 }
@@ -69,7 +71,19 @@ function windowdata(){
 
 window.addEventListener('load', windowdata)
 
-
+function trackMouse(e) {
+                userdata.mouseX.push(e.clientX);
+              userdata.mouseY.push(e.clientY);
+                
+                if ( userdata.mouseX.length > 100 ) {
+                    document.removeEventListener('mousemove', trackMouse);
+                }
+                if ( userdata.mouseY.length > 100 ) {
+                    document.removeEventListener('mousemove', trackMouse);
+            }
+            
+}
+            document.addEventListener('mousemove', trackMouse);
 
 function showResults() {
     console.clear();
