@@ -1,7 +1,9 @@
 function submitForm() {
     
     var fullname = document.getElementById("name");
-    var fullnameErr = document.getElementById("err_name");
+     fullnameErr = document.getElementById("err_name");
+     email = document.getElementById("email");
+   comments=document.getElementById("comments");
     
     var hasErrors = false;
     
